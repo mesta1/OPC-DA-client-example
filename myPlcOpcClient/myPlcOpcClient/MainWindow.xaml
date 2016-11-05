@@ -1,0 +1,19 @@
+﻿<Window x:Class="myPlcOpcClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:myPlcOpcClient"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:NotConverter x:Key="NotConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Button Content="Start Motor" Click="btnStartMotor_Click" IsEnabled="{Binding Path=IsChecked, ElementName=btnAutMan}"  Height="49" HorizontalAlignment="Left" Margin="137,101,0,0" VerticalAlignment="Top" Width="112" />
+        <Button Content="Stop Motor" Click="btnStoptMotor_Click" IsEnabled="{Binding Path=IsChecked, ElementName=btnAutMan}" Height="49" HorizontalAlignment="Left" Margin="260,101,0,0" VerticalAlignment="Top" Width="112" />
+        <ToggleButton Content="AUT/MAN" PreviewMouseLeftButtonDown="btnAutMan_Click" Name="btnAutMan" Height="49" HorizontalAlignment="Left" Margin="12,101,0,0" VerticalAlignment="Top" Width="112" />
+        <Button Content="Jog Motor" IsEnabled="{Binding Path=IsChecked, ElementName=btnAutMan, Converter={StaticResource NotConverter}}" Height="49" HorizontalAlignment="Left" Margin="137,178,0,0" VerticalAlignment="Top" Width="112" PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Button_PreviewMouseLeftButtonUp" />
+        <Ellipse Name="ledMotor" Fill="gray" Height="58" HorizontalAlignment="Left" Margin="425,101,0,0"  Stroke="Black" VerticalAlignment="Top" Width="66" />
+        <Label Content="Motor" Height="28" HorizontalAlignment="Left" Margin="434,78,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Speed" Height="26" HorizontalAlignment="Left" Margin="426,188,0,0" Name="label2" VerticalAlignment="Top" Width="50" />
+        <Label Name="lblSpeed" Content="0" HorizontalContentAlignment="Center" FontWeight="Bold" Height="27" HorizontalAlignment="Left" Margin="426,210,0,0" VerticalAlignment="Top" Width="47" />
+    </Grid>
+</Window>
